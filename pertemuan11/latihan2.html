@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>latihan 2 json dengan table</title>
+    <link rel="stylesheet" href="latihan2.css">
+</head>
+<body>
+    
+    <h3>Daftar Mahasiswa</h3>
+    <div id="listdata"></div>
+
+    <script>
+        const isdata = new XMLHttpRequest();
+        isdata.open("GET","http://localhost/pertemuan11/latihan2.php")
+        isdata.send();
+        isdata.onload = function(){
+            const data = JSON.parse(this.responseText);
+            let tx = "<table><tr><th>NO</th><th>NIM</th><th>Nama</th><th>Jenis Kelamin</th><th>Jurusan</th><th>kelas</th><th>Tanggal Lahir</th></tr>";
+                let no=0;
+
+                for(let i=0;i<data.length;i++){
+                    no++;
+                    let JkEL = (data[i].JkEL=="L")?"Laki-Laki":"Perempuan";
+                    tx +="<tr>";
+                    tx +="  <td>"+no+"</td>";
+                    tx +="  <td>"+data[i].NIM+"</td>";
+                    tx +="  <td>"+data[i].NAMA+"</td>";
+                    tx +="  <td>"+JkEL+"</td>";
+                    tx +="  <td>"+data[i].jRSN+"</td>";
+                    tx +="  <td>"+data[i].kLS+"</td>";
+                    tx +="  <td>"+data[i].tGLHRN+"</td>";
+                    tx +="</tr>";
+                }
+                tx +="</table>";
+
+                document.getElementById("listdata").innerHTML=tx;
+            console.log(data);
+            //console.log(data[0].NIM) akan jadi 220101024
+        }
+    </script>
+
+</body>
+</html>
