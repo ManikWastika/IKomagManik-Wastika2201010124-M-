@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>latihan squery 01</title>
+    <!-- ctrl+space menampilkan file di kiri -->
+</head>
+<body>
+    
+
+    <!-- <h3>Judul</h3>
+    <div id="pesan1">isi ID pesan1</div>
+    <div class="pesan1">isi class pesan1</div> -->
+
+    <h1>pembajakan pesawat</h1>
+
+    <div>
+        <div class="pesan1">pertama persiapakan barang</div>
+        <div id="pesan1">seludupkan barang menggunakan plastik</div>
+    </div>
+
+    <div class="p2">
+        <span class="pesan2">tunggu timeming yang tepat</span>
+        <span id="pesan2">setelah itu pergi ke toilet untuk mengambil senjata</span>
+    </div>
+
+    <div>
+        <p class="pesan3">berkumpul di titik poin</p>
+        <p id="pesan3">melakukan aksi</p>
+    </div>
+
+    <!-- <script
+  src="https://code.jquery.com/jquery-3.7.0.js"
+  integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+  crossorigin="anonymous"></script> bisa online menggunakan CSN ini -->
+    <script src="jquery.js"></script> <!-- lebih baik menggunakan CDN, bisa menggunaka body-->
+    <Script>
+        //$(document).ready(function(){
+            //code javascript nya
+        //});
+            //document.getElementById().innerHTML , bisa disingkat dengan $("h3").html(ineerHTML).
+        $(function(){
+            $("h1").html("berwisata ke pulau Bali");
+            $(".pesan1").html("pertama persiapkan barang");
+            $("#pesan1").html("jangan sampai ada barang yang kelupaan");
+            $(".pesan2").html("jangan sampai ketinggalan pesawat");
+            $("#pesan2").html("kalau pengen BAB tanya saja ke petugas");
+            $(".pesan3").html("kalau sudah sampai jangan lupa berkumpul dulu");
+            $("#pesan3").html("yeay berlibur");
+        });
+    </Script>
+</body>
+</html>
