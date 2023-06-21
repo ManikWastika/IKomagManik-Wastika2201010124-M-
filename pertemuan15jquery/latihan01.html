@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery AJAX</title>
+</head>
+<body>
+
+    <div>
+        Nama Lengkap
+        <input type="text" id="txNAMA">
+    </div>
+    <div>
+        Email
+        <input type="email" id="txEMAIL">
+    </div>
+    <div>
+        UserName
+        <input type="text" id="txUSERNAME">
+    </div>
+
+    <div id="tampildata"></div>
+    
+    <script src="jquery-3.7.0.min.js"></script>
+    <script>
+        $(function(){
+            let urtarget = "https://webpro.ptov.my.id/api/curduser.php?aksi=get";
+
+            //$.ajax();//mengambil dan mengirim data
+            //$.get(); //mengambil data
+            //$.post(); //mengirim data
+
+            $.get({
+                url: urtarget,
+                success: function(dta, status, xhr){
+                    console.log(dta);
+                    //$("#txNAMA").val(dta.isi[0][0]); panggil form
+                    //$("#txEMAIL").val(dta.isi[1][1]); panggil form
+                    //$("#txUSERNAME").val(dta.isi[2][2]); panggil form
+
+                    let tx = "<table><tr><td>No</td><td>Nama Lengkap</td><td>Email</td><td>UserName</td></tr>";
+                    let nox =1;
+                    for(let i=0; i< dta.affected; i++){
+                        tx += '<tr>';
+                        tx += '<td>'+nox+'</td>';
+                        tx += '<td>'+dta.isi[i][0]+'</td>';
+                        tx += '<td>'+dta.isi[i][1]+'</td>';
+                        tx += '<td>'+dta.isi[i][2]+'</td>';
+                        tx += '</tr>';
+                        nox++;
+                        };
+                        tx += "</table>";
+                        console.log(tx);
+                        $("#tampildata").html(tx);
+                    
+                }
+                //success
+                //error
+                //done
+            });
+        })
+    </script>
+
+</body>
+</html>

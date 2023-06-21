@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery AJAX</title>
+</head>
+<body>
+
+    <table>
+        <tr><td>Tanggal</td><td>Jam</td></tr>
+    </table>
+
+    <script src="jquery-3.7.0.min.js"></script>
+    <script>
+        $(function(){
+            let urtarget = "https://data.bmkg.go.id/DataMKG/TEWS/gempaterkini.json";
+
+            //$.ajax();//mengambil dan mengirim data
+            //$.get(); //mengambil data
+            //$.post(); //mengirim data
+
+            $.ajax({
+                url: urtarget,
+                success: function(dta, status, xhr){
+                    console.log(dta);
+                    $("#txNAMA").val(dta.gempa[0][0]);
+                    $("#txEMAIL").val(dta.gempa[0][1]);
+                    $("#txUSERNAME").val(dta.gempa[0][2]);
+                }
+                //success
+                //error
+                //done
+            });
+        })
+    </script>
+
+</body>
+</html>
